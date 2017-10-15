@@ -41,7 +41,7 @@ def add_fit_args(parser):
     return a parser added with args required by fit
     """
     # Training settings
-    parser.add_argument('--batch-size', type=int, default=128, metavar='N',
+    parser.add_argument('--batch-size', type=int, default=256, metavar='N',
                         help='input batch size for training (default: 64)')
     parser.add_argument('--test-batch-size', type=int, default=1000, metavar='N',
                         help='input batch size for testing (default: 1000)')
@@ -168,7 +168,7 @@ class LeNetLearner:
                 loss = self.network.criterion(logits_1, target)
                 print("Trial Loss: {}".format(loss.data[0]))
                 loss.backward()
-
+                
                 self.network.backward(logits_1.grad)
 
                 self.optimizer.step()
